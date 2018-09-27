@@ -1,0 +1,22 @@
+{
+  "name": "feedEr",
+  "version": "1.0.0",
+  "description": "Game where you feed each other",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --config webpack.config.js",
+    "start:dev": "webpack-dev-server --config webpack.dev.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pixi.js": "^4.8.1",
+    "socket.io": "^2.1.1",
+    "webpack-cli": "^3.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "webpack": "^4.17.1",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
