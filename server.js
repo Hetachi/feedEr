@@ -9,3 +9,7 @@ app.use(function(req, res, next) {
 
 var server = app.listen(port);
 var io = require('socket.io').listen(server);
+
+io.on('connection', (socket) => {
+    console.log(socket.id)
+})
