@@ -2,10 +2,12 @@
   "name": "feedEr",
   "version": "1.0.0",
   "description": "Game where you feed each other",
-  "main": "index.js",
+  "main": "ele-app.js",
   "scripts": {
-    "start": "webpack --config webpack.config.js",
-    "start:dev": "webpack-dev-server --config webpack.dev.config.js"
+    "build": "webpack --config webpack.config.js",
+    "start:dev": "webpack-dev-server --config webpack.dev.config.js",
+    "start:ele": "electron .",
+    "build:ele": "electron-builder"
   },
   "author": "",
   "license": "ISC",
@@ -18,8 +20,24 @@
     "webpack-cli": "^3.1.1"
   },
   "devDependencies": {
+    "electron-builder": "^20.31.2",
+    "electron": "^3.0.7",
     "nodemon": "^1.18.4",
     "webpack": "^4.17.1",
     "webpack-dev-server": "^3.1.9"
+  },
+  "build": {
+  "appId": "FeedEr",
+  "mac": {
+    "category": "Platformer, Action, RPG"
+  },
+  "files": [
+  "style/*",
+  "js/**/**/*",
+  "node_modules/**/*"
+  ],
+  "directories":{
+    "buildResources": "assets"
   }
+}
 }

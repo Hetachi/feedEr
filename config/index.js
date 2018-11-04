@@ -1,7 +1,9 @@
 export let spriteList = []
 export let gameObjectList = []
 
-export const gameRate = 1
+export const gameRate = 5
+
+export const dodgeMaxDistance = 20
 
 export const gameBounds = {
   x: 800,
@@ -16,18 +18,8 @@ export const defaultResourcesForNewAccount = {
   gems: 0
 }
 
-export const DEBUG_ENABLED = true
+export const DEBUG_ENABLED = false
 
 export const defaultVelocity = 10
 
 export const gameGridSlotSize = 50
-
-export const gameGrid = [
-  [0,0,0,0,0],
-  [0,0,0,0,0],
-  [0,0,0,0,0],
-  [0,0,0,0,0],
-  [0,0,0,0,0],
-  [0,0,0,0,0],
-  [0,0,0,0,0],
-]
