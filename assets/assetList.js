@@ -1,14 +1,10 @@
 export default [
   {
-    name: 'bunny',
-    file: 'player.png',
+    name: 'greenBlock',
+    file: 'assets/greenBlock.png',
   },
   {
-    name: 'carrot',
-    file: 'carrot.png',
+    name: 'redBlock',
+    file: 'assets/redBlock.png',
   },
-  {
-    name: 'bg',
-    file: 'grass.jpg',
-  }
 ]

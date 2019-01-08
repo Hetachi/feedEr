@@ -1,4 +1,4 @@
-export default = (keyCode) => {
+export default (keyCode) => {
   let key = {};
   key.code = keyCode;
   key.isDown = false;
