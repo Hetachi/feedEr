@@ -9,6 +9,20 @@
   <body>
     <progress id="progressBar" style="position:absolute;" value="0" max="100"></progress>
     <input id="consoleInput" class="hidden"></input>
+    <div id="skillCooldown" class="skillCooldown">
+      <progress id="skillCooldownProgress" style="position:absolute;" value="0" max="100"></progress>
+    </div>
+    <div id="readyScreen" class="readyScreen">
+      <p class="info-text">Use arrows ←A and D→ to position yourself and then press ready to begin the match!</p>
+      <p class="info-text">To use ability press F, on top there is a cooldown meter which shows when you can use ability again</p>
+      <p class="info-text">Use SPACE to jump, and SHIFT to dash</p>
+      <button id="readyButton" class="readyButton"> READY! </button>
+    </div>
+    <div id="endScreen" class="endScreen hidden">
+        <h3 id="winner" class="winner hidden">WINNER</h3>
+        <h3 id="loser" class="loser hidden">LOSER</h3>
+        <p>Reload page to match against new oponent</p>
+    </div>
   </body>
   <script type="application/javascript" src="./dist/bundle.js" charset="utf-8"></script>
 </html>

@@ -1,9 +1,11 @@
-import { defaultVelocity, gameBounds, gameRate } from '../../../config'
+import { defaultVelocity, gameBounds, gameRate, abilityCoolDown, abilityPlacementList, abilityNotDeadlyCoolDown} from '../../../config'
 import handleJump from '../atoms/handleJump'
 import handleDodge from '../atoms/handleDodge'
+import abilityUse from '../atoms/abilityUse'
+import hitRegistration from '../atoms/hitRegistration'
 
-export default (delta, player ) => {
-    if(player.y < gameBounds.y - 50 && !player.jump && player.isFalling) {
+export default (delta, player, App, resources, socket, enemy) => {
+    if(player.y < gameBounds.y - 50 && !player.jump && player.isFalling && !player.dead && !enemy.dead && player.ready && enemy.ready) {
 
       var tempPlayerY = player.y
       tempPlayerY -= -player.fallingSpeed
@@ -25,7 +27,6 @@ export default (delta, player ) => {
       handleDodge(player)
     }
 
-    // MOVEMENT LEFT OR RIGHT
     if(player.left && player.x >= 0) {
       player.x -= (+1 * gameRate)
     }
@@ -33,4 +34,47 @@ export default (delta, player ) => {
     if(player.right && player.x <= gameBounds.x - 50) {
       player.x -= (-1 * gameRate)
     }
+
+    if(player.abilityCoolDown === 0 && player.plantedSpike) {
+      abilityUse(player.x, player.y, player.id, App, resources, socket, enemy)
+      player.abilityCoolDown++
+    }
+
+    else if (player.plantedSpike) {
+      if(player.abilityCoolDown < abilityCoolDown) {
+        player.abilityCoolDown++
+        document.getElementById('skillCooldownProgress').value = player.abilityCoolDown
+      }
+      else {
+        player.abilityCoolDown = 0
+        player.plantedSpike = false
+      }
+    }
+
+    abilityPlacementList.map( spike => {
+      if(spike.lifeTime > abilityNotDeadlyCoolDown) {
+        spike.deadly = true
+        spike.isFalling = true
+      } else {
+        spike.lifeTime++
+      }
+
+      if(spike.y < gameBounds.y - 50 && spike.isFalling) {
+
+        var tempSpikeY = spike.y
+        tempSpikeY -= -spike.fallingSpeed
+        if(tempSpikeY >= gameBounds.y - 50) {
+          tempSpikeY = gameBounds.y - 50
+        }
+        spike.y = tempSpikeY
+
+        if(spike.fallingSpeed <= 3) {
+          spike.fallingSpeed++
+        }
+      }
+
+      if(hitRegistration(spike, player) && spike.deadly) {
+        socket.emit('playerDied', player.id)
+      }
+    })
 }
