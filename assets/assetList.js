@@ -7,4 +7,8 @@ export default [
     name: 'redBlock',
     file: 'assets/redBlock.png',
   },
+  {
+    name: 'redSpike',
+    file: 'assets/spikeRed.png',
+  }
 ]

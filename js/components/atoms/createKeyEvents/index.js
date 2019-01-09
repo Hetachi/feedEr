@@ -6,6 +6,7 @@ export default (player) => {
   const right = keyboardEvents(68)
   const spawnMob = keyboardEvents(81)
   const dodge = keyboardEvents(16)
+  const plantSpike = keyboardEvents(70)
 
   jump.press = () => {
     if(!player.jump && player.y > 50) {
@@ -38,5 +39,9 @@ export default (player) => {
 
   dodge.release = () => {
     player.dodge = false
+  }
+
+  plantSpike.press = () => {
+    player.plantedSpike = true
   }
 }

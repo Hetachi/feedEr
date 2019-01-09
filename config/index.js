@@ -1,9 +1,14 @@
 export let spriteList = []
 export let gameObjectList = []
+export let abilityPlacementList = []
 
 export const gameRate = 5
 
 export const dodgeMaxDistance = 20
+
+export const abilityCoolDown = 100 // in MS / 100
+
+export const abilityNotDeadlyCoolDown = 50 // in MS / 100
 
 export const gameBounds = {
   x: 800,
